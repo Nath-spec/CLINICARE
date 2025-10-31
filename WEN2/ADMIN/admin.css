@@ -1,0 +1,166 @@
+/* FILE: ADMIN/admin.css (FINAL FIX: Chart Layout) */
+
+/* ===== base / theme (matches your patient.css variables) ===== */
+:root{
+  --bg: #f5f8fb;
+  --card: #ffffff;
+  --primary: #1f4e79; /* dark blue */
+  --accent: #2a6fb0;
+  --muted: #6b7280;
+  --radius: 12px;
+  --container: 1100px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:var(--bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ===== top nav (same look as patient.html) ===== */
+.topnav{
+  background: linear-gradient(90deg,var(--primary),var(--accent));
+  color:#fff;
+  padding:12px 18px;
+  position:sticky; top:0; z-index:60;
+  box-shadow:0 6px 18px rgba(31,78,121,0.12);
+}
+.nav-inner{
+  max-width:var(--container);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.brand-mark{
+  width:30px;height:30px;border-radius:6px;background:#fff;color:var(--primary);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;
+}
+.brand-text{font-size:18px}
+.nav-links{display:flex;gap:12px;align-items:center}
+.nav-link{
+  color:rgba(255,255,255,0.92);text-decoration:none;padding:8px 10px;border-radius:8px;transition:all .2s
+}
+.nav-link:hover{background:rgba(255,255,255,0.12)}
+.nav-link.active{background:rgba(255,255,255,0.18);font-weight:600}
+.nav-right{display:flex;align-items:center;gap:12px}
+
+/* Profile */
+.profile{display:flex;align-items:center;gap:10px;cursor:pointer;position:relative}
+.avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.9)}
+.name{color:#fff;font-weight:600}
+.caret{color:rgba(255,255,255,0.85);font-size:12px;transition:transform .25s}
+.profile-dropdown{
+  position:absolute;top:48px;right:0;width:200px;background:#fff;border-radius:10px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.12);list-style:none;overflow:hidden;padding:6px 0;
+  opacity:0;pointer-events:none;transform:translateY(-8px);transition:all .22s;z-index:99;
+}
+.profile-dropdown.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.profile-dropdown li a{display:flex;gap:10px;padding:12px;color:#333;text-decoration:none;font-weight:500}
+.profile-dropdown li a.logout{color:#b91c1c}
+
+/* ===== main container layout ===== */
+.container{max-width:var(--container);margin:20px auto;padding:0 18px}
+.grid{
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  gap:18px;
+  align-items:start;
+}
+
+/* left sidebar */
+.sidebar{
+  position:sticky;top:88px;
+  background:var(--card);border-radius:var(--radius);padding:14px;box-shadow:0 8px 24px rgba(20,30,50,0.06);
+}
+.side-item{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;cursor:pointer;color:var(--primary);font-weight:600}
+.side-item:hover{background:#f1f6ff}
+.side-item.active{background:linear-gradient(90deg,#e8f2ff,#f7fbff);border-left:3px solid var(--accent)}
+.side-item i{width:26px;text-align:center;color:var(--accent)}
+
+/* content area cards */
+.card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 8px 24px rgba(20,30,50,0.06)}
+.card-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.small-link{color:var(--primary);text-decoration:none;font-weight:600}
+
+/* ===== Dashboard charts (FIXED) ===== */
+.charts {
+  /* Ginawa itong 2 columns (Line at Pie/Stats) at 1 full-width row sa baba (Bar) */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50% / 50% */
+  gap: 16px;
+  align-items: start;
+}
+
+.chart-card {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fff, #fbfdff);
+}
+
+/* FIX: Inalis ang fixed height, ginamit ang max-height. Ang wrapper DIV sa PHP ang nagtatakda ng taas. */
+canvas {
+  display: block;
+  width: 100%;
+  height: auto !important; /* Overwrite inline styles/default height */
+  max-height: 350px; /* Upper limit */
+  background: transparent;
+}
+
+/* stats row */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.stat{padding:14px;border-radius:12px;background:white;box-shadow:0 6px 18px rgba(20,30,50,0.04)}
+.stat h4{color:var(--primary);margin-bottom:6px}
+.stat p{font-weight:700;font-size:1.15rem}
+
+/* ===== Patients & Doctors table ===== */
+.table{width:100%;border-collapse:collapse}
+th,td{padding:12px 10px;border-bottom:1px solid #eef3fa;text-align:left;color:var(--muted)}
+th{color:var(--primary);font-weight:700}
+.btn{padding:8px 12px;border-radius:8px;border:0;cursor:pointer;font-weight:700}
+.btn.accept{background:#dcfce7;color:#175d2c}
+.btn.remove{background:#fee2e2;color:#9b1c1c}
+.btn.secondary{background:#eef6ff;color:var(--primary)}
+.action-dropdown{position:relative;display:inline-block}
+.dropdown-menu{position:absolute;right:0;top:36px;background:#fff;border-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,0.08);min-width:140px;display:none;z-index:50}
+.dropdown-menu.show{display:block}
+.dropdown-menu button{display:block;width:100%;padding:10px;border:0;background:transparent;text-align:left;cursor:pointer}
+
+/* ===== Chat layout inside admin ===== */
+.chat-wrapper{display:grid;grid-template-columns:260px 1fr;gap:14px;height:540px}
+.chat-list{background:var(--card);border-radius:12px;padding:10px;overflow:auto}
+.chat-item{display:flex;gap:10px;align-items:center;padding:8px;border-radius:8px;cursor:pointer}
+.chat-item:hover{background:#f5f8fb}
+.chat-item.active{background:#e8f2ff;border-left:3px solid var(--accent)}
+.chat-area{background:var(--card);border-radius:12px;padding:12px;display:flex;flex-direction:column;overflow:hidden}
+.chat-box{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px;background:#f9fbff;border-radius:8px}
+.msg{max-width:72%;padding:10px;border-radius:12px;position:relative}
+.msg.admin{background:#eef6ff;align-self:flex-start}
+.msg.doc{background:#e6fbe7;align-self:flex-end}
+.msg-time{font-size:11px;color:var(--muted);margin-top:6px}
+
+.chat-input{display:flex;gap:10px;padding-top:10px}
+.chat-input input{flex:1;padding:10px;border-radius:10px;border:1px solid #e6eef6}
+.chat-input button{padding:10px 14px;border-radius:10px;border:0;background:var(--primary);color:#fff}
+
+/* ===== Appointments ===== */
+.status-badge{padding:6px 10px;border-radius:999px;font-weight:700}
+.pending{background:#fff7dd;color:#92400e}
+.approved{background:#dcfce7;color:#166534}
+.declined{background:#fee2e2;color:#991b1b}
+
+/* responsive (FIXED for Charts) */
+@media (max-width: 800px) { 
+  .charts {
+    grid-template-columns: 1fr; /* Nagiging 1 column lang sa maliit na screen */
+  }
+}
+@media (max-width:1000px){
+  .grid{grid-template-columns:1fr}
+  .chat-wrapper{grid-template-columns:1fr}
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClinicCare — Your Health, Our Priority</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>ClinicCare</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#about">About</a>
+      <a href="#" id="bookBtn">Book Appointment</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+  <div class="content">
+    <h2>Welcome to ClinicCare</h2>
+    <p>Your trusted partner in health and wellness — book your appointment today.</p>
+    <button id="bookNow">Book Appointment</button>
+  </div>
+</section>
+
+
+
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>ClinicCare is a modern digital platform that connects patients with healthcare providers for hassle-free consultation and appointment booking. Our mission is to make healthcare more accessible and efficient for everyone.</p>
+  </section>
+
+  <section class="doctors" id="doctors">
+    <h2>Our Doctors</h2>
+    <div class="doctor-cards">
+      <div class="doctor">
+        <img src="PICTURES/doc2.jpg" alt="Doctor">
+        <h3>Dr. Sophia Espiritu</h3>
+        <p>General Physician</p>
+      </div>
+      <div class="doctor">
+        <img src="PICTURES/doc1.jpg" alt="Doctor">
+        <h3>Dr. Nathaniel Sison</h3>
+        <p>Cardiologist</p>
+      </div>
+      <div class="doctor">
+        <img src="PICTURES/doc3.jpg" alt="Doctor">
+        <h3>Dr. Ricky Biason</h3>
+        <p>Pediatrician</p>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <h3>ClinicCare</h3>
+    <p>© 2025 ClinicCare | All Rights Reserved</p>
+    <p>Email: info@cliniccare.com | Contact: +63 919 7571 653</p>
+  </footer>
+
+  <div class="modal" id="authModal">
+
+  <form class="modal-content" id="loginForm">
+    <h2>Login</h2>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit" class="Login">Login</button>
+    <div class="toggle" id="toRegister">Don’t have an account? Register</div>
+  </form>
+
+  <form class="modal-content" id="registerForm" style="display:none;">
+  <h2>Register</h2>
+  <input type="text" name="fullname" placeholder="Full Name" required>
+  <input type="text" name="username" placeholder="Username" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="password" name="password" placeholder="Password" required>
+  <button type="submit" class="Register">Register</button>
+  <div class="toggle" id="toLogin">Already have an account? Login</div>
+</form>
+
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
